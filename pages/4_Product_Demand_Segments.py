@@ -6,11 +6,18 @@ st.title("📦 Product Demand Segments")
 st.markdown("### Product Clustering using K-Means")
 
 # Cluster Image
-st.image(
-    "charts/product_clusters.png",
-    caption="Product Demand Clusters",
-    use_container_width=True
-)
+import os
+
+image_path = "charts/product_clusters.png"
+
+if os.path.exists(image_path):
+    st.image(
+        image_path,
+        caption="Product Demand Clusters",
+        width="stretch"
+    )
+else:
+    st.warning("Image not found.")
 
 # Cluster Table
 cluster_data = pd.DataFrame({
@@ -59,7 +66,7 @@ cluster_data = pd.DataFrame({
 
 st.subheader("Cluster Membership")
 
-st.dataframe(cluster_data)
+st.dataframe(cluster_data, width="stretch")
 
 st.subheader("Cluster Meaning")
 
